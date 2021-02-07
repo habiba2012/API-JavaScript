@@ -13,44 +13,51 @@
 
 <body>
     <section>
-        <header class="header-container">
-            <nav class="navbar navbar-expand-lg navbar-light nav-color sticky-top  mt-2">
-                <div class="container-fluid">
-                    <a class="navbar-brand" href="#">
-                        <img class="img-fluid img-logo" src="images/logo-food.jpg" alt="logo">
-                    </a>
-                    <button class="navbar-toggler dropdown-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <div id="foodDetail">
+
+        </div>
+    </section>
+    <section>
+        <nav class="navbar navbar-expand-lg navbar-light nav-color sticky-top  mt-2">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">
+                    <img class="img-fluid img-logo" src="images/logo-food.jpg" alt="logo">
+                </a>
+                <button class="navbar-toggler dropdown-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon "></span>
                     </button>
-                    <div class="collapse navbar-collapse nav-style" id="navbarNavAltMarkup">
-                        <div class="navbar-nav ml-auto font-weight-bold p-2 navbar-font">
-                            <a class="nav-link active" aria-current="page" href="#home">Home</a>
-                            <a class="nav-link active" href="#about">About</a>
-                            <a class="nav-link active" href="#recipes">Recipes</a>
-                            <a class="nav-link active" href="#blog">Blog</a>
-                        </div>
+                <div class="collapse navbar-collapse nav-style" id="navbarNavAltMarkup">
+                    <div class="navbar-nav ml-auto font-weight-bold p-2 navbar-font">
+                        <a class="nav-link active" aria-current="page" href="#home">Home</a>
+                        <a class="nav-link active" href="#about">About</a>
+                        <a class="nav-link active" href="#recipes">Recipes</a>
+                        <a class="nav-link active" href="#blog">Blog</a>
                     </div>
                 </div>
-            </nav>
-            <div class="container ">
-                <div class="input-wrapper form-inline ">
-                    <input id="search-input" class="form-control mr-sm-2 text-center" type="search" placeholder="Search" aria-label="Search">
-                    <label for="search" class="fas fa-search input-icon"></label>
-                    <button onClick="getMealName()" class="btn btn-outline-danger my-2 my-sm-0" type="submit">Search</button>
+            </div>
+        </nav>
+        <div class="container ">
+            <div class="input-wrapper form-inline ">
+                <input id="input-search" type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+                <label for="search" class="fas fa-search input-icon"></label>
+                <button onClick="getMealName()" class="btn btn-outline-danger my-2 my-sm-0" type="submit">Search</button>
 
-                </div>
-                <!-- <form class="form-inline">
-                    <i class="fas fa-search"></i><input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                </form> -->
             </div>
 
+        </div>
 
-        </header>
 
     </section>
-    <div id="meals">Food List</div>
+    <section class="meal-list">
+        <div id="meals"></div>
+    </section>
+
     <script src="app.js"></script>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </body>
 
 </html>

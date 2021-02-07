@@ -1,5 +1,33 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    margin-bottom: 100px;
+}
+
 body {
+    font-family: 'Roboto', sans-serif;
     background-color: rgb(230, 230, 138);
+}
+
+.meal-list {
+    margin-top: 50px;
+    margin-bottom: 200px;
+    margin-left: 20px;
+}
+
+#meals {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 10px;
+    row-gap: 20px;
+    text-align: center;
+}
+
+#foodDetail img {
+    width: 200px;
 }
 
 .img-logo {
@@ -16,18 +44,28 @@ body {
 
 .input-icon {
     position: absolute;
-    left: 420px;
+    left: 5px;
     top: calc(50% - 0.5em);
     /* Keep icon in center of input, regardless of the input height */
 }
 
 input {
     padding-left: 17px;
+    text-align: center;
 }
 
 .input-wrapper {
     position: relative;
-    text-align: center!important;
+    margin-left: 400px;
 }
 
-.search {}
+#food-container {
+    width: 300px;
+    height: 380px;
+    padding-bottom: 10px;
+    margin: 0 auto;
+    text-align: center;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px lightgray;
+}
