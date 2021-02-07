@@ -1,0 +1,33 @@
+body {
+    background-color: rgb(230, 230, 138);
+}
+
+.img-logo {
+    width: 120px;
+    background-color: transparent!important;
+    border-radius: 50%;
+}
+
+.nav-style {
+    margin-top: -70px;
+    line-height: 30px;
+    font-size: 1.2em;
+}
+
+.input-icon {
+    position: absolute;
+    left: 420px;
+    top: calc(50% - 0.5em);
+    /* Keep icon in center of input, regardless of the input height */
+}
+
+input {
+    padding-left: 17px;
+}
+
+.input-wrapper {
+    position: relative;
+    text-align: center!important;
+}
+
+.search {}
