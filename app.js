@@ -1,9 +1,11 @@
-//Fetch Api
+
 const inputSearchName =  document.getElementById('input-search');
  const getMealName =()=>{
+   //check input value
    if((inputSearchName.value).length<1 ||(inputSearchName.value)===null ){
     alert('Please write your desired meal.')
    }else
+   //Fetch Api
 fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${inputSearchName.value}`)
   .then(res => res.json())
   .then(data =>displayMealName(data.meals))
@@ -19,92 +21,53 @@ fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${inputSearchName.va
           <div id="food-container">
           <img src="${foodName.strMealThumb}" class="card-img-top" alt="food image">
           <h5 class="card-title">${foodName.strMeal}</h5>
-          <button class="btn btn-success" onclick="displayFoodDetail('${foodName.str}')">Details</button>
+          <button class="btn btn-success" onclick="displayFoodDetail('${foodName.strMeal}') ">Details</button>
           </div>
     </div>
     </div>
 </div>`
-
     foodDiv.innerHTML=foodInfo
     mealDiv.appendChild(foodDiv);
     document.getElementById('input-search').value='';
-      })
-    } 
+   })
+  } 
+};
 
-    const displayFoodDetail= mealId=>{
-  
-      const url =`https://www.themealdb.com/api/json/v1/1/search.php?s=${mealId}`;
-        fetch(url)
-        .then(res => res.json())
-        .then(data => mealInfo(data))
-        .then(err=>console.log(err));
-    }
-    
-  const mealInfo = meal => {
-  const ingredientsInfo = meal.meals[0];
-  console.log(ingredientsInfo.strIngredient)
+//Show meal details with button click
+const displayFoodDetail= (nameMeal)=>{
+ 
+  const url =`https://www.themealdb.com/api/json/v1/1/search.php?s=${nameMeal}`;
+  console.log(url)
+    fetch(url)
+    .then(res => res.json())
+    .then(data => mealInfo(data.meals[0]))
+    .then(err=>console.log(err));
+
+}
+
+const mealInfo = meals => {
   const ingredientsDiv = document.getElementById('foodDetail');
   ingredientsDiv.innerHTML = `
-      <h1>${meal.name}</h1>
-      <p>Population: ${meal.strIngredient1}</p>
-      <p>Area: ${country.area}</p>
-      <img src="${country.flag}">
-  `
- }
-/*  document.getElementById('food-container').addEventListener('click',()=>{
-  const url = 'https://www.themealdb.com/api/json/v1/1/lookup.php?i={}';
-    fetch('url')
-    .then(res => res.json())
-    .then(data => console.log(data.meals[0]));
-  
+  <img src="${meals.strMealThumb}" class="card-img-top" alt="food image">
+  <h5 class="card-title">${meals.strMeal}</h5>
+  <h5>Meal Ingredients List:</h5>
+  <ul id="ingredients-list"></ul>
+`
+  const mealIndigents=[meals.strIngredient1, meals.strIngredient2, meals.strIngredient3, meals.strIngredient4, meals.strIngredient5, meals.strIngredient6,
+  meals.strIngredient7, meals.strIngredient8, meals.strIngredient9, meals.strIngredient10];
 
-  const createMeal = meal => {
-    const ingredients = [];
-  
-    // Get all ingredients from the object. Up to 20
-    for (let i = 1; i <= 20; i++) {
-      if (meal[`strIngredient${i}`]) {
-        ingredients.push(
-          `${meal[`strIngredient${i}`]} - ${meal[`strMeasure${i}`]}`
-        );
-      } else {
-        // Stop if there are no more ingredients
-        break;
-      }
+  for(let i=0; i<mealIndigents.length; i++){
+    const item = mealIndigents[i];
+    if(item===""||item===null){
+      return item;
+    }else{
+      console.log(item)
+     
+    const ul = document.getElementById('ingredients-list');
+    const li = document.createElement('li');
+    li.innerHTML= item;
+    ul.appendChild(li);
+
     }
-  
-    const newInnerHTML = `
-      <div class="row">
-        <div class="columns five">
-          <img src="${meal.strMealThumb}" alt="Meal Image">
-          ${
-            meal.strCategory
-              ? `<p><strong>Category:</strong> ${meal.strCategory}</p>`
-              : ''
-          }
-          ${meal.strArea ? `<p><strong>Area:</strong> ${meal.strArea}</p>` : ''}
-          ${
-            meal.strTags
-              ? `<p><strong>Tags:</strong> ${meal.strTags
-                  .split(',')
-                  .join(', ')}</p>`
-              : ''
-          }
-          <h5>Ingredients:</h5>
-          <ul>
-            ${ingredients.map(ingredient => `<li>${ingredient}</li>`).join('')}
-          </ul>
-        </div>
-      
-      </div>
-    
-    `;
-  const mealIngredientDiv = document.getElementById('foodDetail');
-  mealIngredientDiv.innerHTML = newInnerHTML;
-  
-  };
-})  */
-
-
-
-};
+  }
+}
