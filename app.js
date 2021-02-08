@@ -20,7 +20,7 @@ fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${inputSearchName.va
        const foodInfo=`
           <div id="food-container">
           <img src="${foodName.strMealThumb}" class="card-img-top" alt="food image">
-          <h5 class="card-title">${foodName.strMeal}</h5>
+          <h5 class="card-title font-weight-bold">${foodName.strMeal}</h5>
           <button class="btn btn-success" onclick="displayFoodDetail('${foodName.strMeal}') ">Details</button>
           </div>
     </div>
@@ -48,10 +48,12 @@ const displayFoodDetail= (nameMeal)=>{
 const mealInfo = meals => {
   const ingredientsDiv = document.getElementById('foodDetail');
   ingredientsDiv.innerHTML = `
-  <img src="${meals.strMealThumb}" class="card-img-top" alt="food image">
-  <h5 class="card-title">${meals.strMeal}</h5>
-  <h5>Meal Ingredients List:</h5>
-  <ul id="ingredients-list"></ul>
+  <div class="d-flex card w-25 mx-auto text-left rounded">
+  <img src="${meals.strMealThumb}" class="card-img-top w-100" alt="food image">
+  <h3 class="card-title text-danger font-weight-bold pl-5">${meals.strMeal}</h3>
+  <h5 class="font-weight-bold pl-5">Meal Ingredients List:</h5>
+  <ul class="list-unstyled pl-5" id="ingredients-list"></ul>
+  </div>
 `
   const mealIndigents=[meals.strIngredient1, meals.strIngredient2, meals.strIngredient3, meals.strIngredient4, meals.strIngredient5, meals.strIngredient6,
   meals.strIngredient7, meals.strIngredient8, meals.strIngredient9, meals.strIngredient10];
